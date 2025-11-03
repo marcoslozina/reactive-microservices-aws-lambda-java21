@@ -1,0 +1,41 @@
+{
+  "version": "2.0",
+  "routeKey": "POST /hello",
+  "rawPath": "/hello",
+  "rawQueryString": "",
+  "headers": {
+    "accept": "application/json",
+    "content-type": "application/json",
+    "content-length": "27",
+    "host": "localhost",
+    "user-agent": "sam-local",
+    "x-forwarded-port": "3000",
+    "x-forwarded-proto": "http"
+  },
+  "queryStringParameters": null,
+  "requestContext": {
+    "accountId": "123456789012",
+    "apiId": "local",
+    "domainName": "localhost",
+    "domainPrefix": "localhost",
+    "http": {
+      "method": "POST",
+      "path": "/hello",
+      "protocol": "HTTP/1.1",
+      "sourceIp": "127.0.0.1",
+      "userAgent": "sam-local"
+    },
+    "requestId": "test-request-id-post",
+    "routeKey": "POST /hello",
+    "stage": "$default",
+    "time": "01/Jan/2024:00:00:00 +0000",
+    "timeEpoch": 1704067200000
+  },
+  "body": "{\"name\":\"TestUser\",\"message\":\"Hello\"}",
+  "isBase64Encoded": false
+}
+
+
+
+
+

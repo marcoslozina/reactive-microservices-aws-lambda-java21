@@ -1,0 +1,47 @@
+[
+  {
+    "name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent",
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent",
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent$RequestContext",
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent$ProxyRequestContext",
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent$RequestIdentity",
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.util.HashMap",
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.util.Map",
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "java.util.AbstractMap",
+    "allDeclaredMethods": true
+  }
+]
+
+

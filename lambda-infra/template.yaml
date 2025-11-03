@@ -1,0 +1,111 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Microservicios Reactivos con Spring Boot y AWS Lambda
+  
+  Este template SAM despliega una función Lambda reactiva con Spring Boot 3.x y Java 21.
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 1024
+    Runtime: java21
+    Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+    Environment:
+      Variables:
+        SPRING_CLOUD_FUNCTION_DEFINITION: hello
+
+Resources:
+  ReactiveFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../lambda-core/build/libs/
+      PackageType: Zip
+      Description: Función Lambda reactiva con Spring Boot 3.x y Project Reactor
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: hello
+          SPRING_PROFILES_ACTIVE: aws
+      Events:
+        HttpApi:
+          Type: HttpApi
+          Properties:
+            Path: /hello
+            Method: GET
+            ApiId: !Ref ReactiveApi
+        HttpApiPost:
+          Type: HttpApi
+          Properties:
+            Path: /hello
+            Method: POST
+            ApiId: !Ref ReactiveApi
+      Policies:
+        # Permiso mínimo para CloudWatch Logs (least privilege)
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+              Resource:
+                - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/${ReactiveFunction}:*'
+                - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/${ReactiveFunction}'
+        # Ejemplos de permisos least-privilege para servicios AWS (comentados)
+        # Descomentar y ajustar según necesidades:
+        # - DynamoDB:
+        #     - Effect: Allow
+        #       Action:
+        #         - dynamodb:GetItem
+        #         - dynamodb:PutItem
+        #         - dynamodb:Query
+        #       Resource: 'arn:aws:dynamodb:*:*:table/MyTable'
+        # - SQS:
+        #     - Effect: Allow
+        #       Action:
+        #         - sqs:SendMessage
+        #         - sqs:ReceiveMessage
+        #       Resource: 'arn:aws:sqs:*:*:MyQueue'
+        # - SNS:
+        #     - Effect: Allow
+        #       Action:
+        #         - sns:Publish
+        #       Resource: 'arn:aws:sns:*:*:MyTopic'
+
+  ReactiveApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      Description: API Gateway HTTP API para funciones Lambda reactivas
+      CorsConfiguration:
+        AllowOrigins:
+          - "*"
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        AllowHeaders:
+          - Content-Type
+          - X-Amz-Date
+          - Authorization
+          - X-Api-Key
+        MaxAge: 300
+
+Outputs:
+  ReactiveFunction:
+    Description: "Reactive Lambda Function ARN"
+    Value: !GetAtt ReactiveFunction.Arn
+    Export:
+      Name: !Sub "${AWS::StackName}-ReactiveFunctionArn"
+  
+  ReactiveApiUrl:
+    Description: "API Gateway HTTP API endpoint URL"
+    Value: !Sub "https://${ReactiveApi}.execute-api.${AWS::Region}.amazonaws.com"
+    Export:
+      Name: !Sub "${AWS::StackName}-ReactiveApiUrl"
+  
+  ReactiveApiId:
+    Description: "API Gateway HTTP API ID"
+    Value: !Ref ReactiveApi
+    Export:
+      Name: !Sub "${AWS::StackName}-ReactiveApiId"
+

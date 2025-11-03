@@ -1,0 +1,198 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+.gradletasknamecache
+**/build/
+**/.gradle/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!.idea/codeStyles/
+!.idea/codeStyleSettings.xml
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+.metadata/
+
+# VS Code / Cursor
+.vscode/
+.cursor/
+
+# NetBeans
+nbproject/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Logs
+*.log
+logs/
+*.log.*
+*.out
+
+# Spring Boot
+target/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+!gradle/wrapper/gradle-wrapper.jar
+
+# SAM
+.aws-sam/
+samconfig.toml.bak
+*.template.yaml.bak
+
+# LocalStack
+.localstack/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Native binaries
+*.so
+*.dylib
+*.dll
+!**/src/main/resources/**/*.so
+!**/src/main/resources/**/*.dylib
+!**/src/main/resources/**/*.dll
+lambda-core/build/lambda-core
+
+# Test output
+test-results/
+**/test-results/
+TEST-*.xml
+**/TEST-*.xml
+*.test-result.xml
+
+# Coverage reports
+.nyc_output/
+coverage/
+*.lcov
+*.coverage
+htmlcov/
+
+# Maven (si se migra)
+pom.xml.target
+.mvn/
+.mvnwrapper.properties
+
+# Docker
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+*.cache
+
+# OS generated files
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# IDE specific
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+.loadpath
+
+# Application specific
+*.pid
+*.seed
+*.pid.lock
+
+# Node (si hay scripts)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (si hay scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Compressed files (except those needed)
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+!gradle/wrapper/gradle-wrapper.jar
+
+# Patch files
+*.patch
+*.diff
+
+# Lock files
+*.lock
+package-lock.json
+yarn.lock

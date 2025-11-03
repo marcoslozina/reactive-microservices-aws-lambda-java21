@@ -1,0 +1,33 @@
+# Configuración para habilitar donaciones en GitHub
+# Este archivo habilita el botón "Sponsor" en el repositorio
+
+# Opción 1: GitHub Sponsors (recomendado)
+# Requiere crear un perfil de GitHub Sponsors primero en: https://github.com/sponsors
+# github: marcosraimundolozina  # Reemplaza con tu usuario de GitHub
+
+# Opción 2: Ko-fi
+# Crea una cuenta en: https://ko-fi.com/
+# ko_fi: tu_usuario_ko_fi
+
+# Opción 3: Patreon
+# Crea una cuenta en: https://www.patreon.com/
+# patreon: tu_usuario_patreon
+
+# Opción 4: Open Collective
+# Crea una cuenta en: https://opencollective.com/
+# open_collective: tu_proyecto
+
+# Opción 5: PayPal (enlace personalizado)
+# custom: ["https://www.paypal.me/tu_usuario", "https://paypal.com/donate?hosted_button_id=TU_BOTON_ID"]
+
+# Opción 6: Buy Me a Coffee
+# custom: ["https://www.buymeacoffee.com/tu_usuario"]
+
+# Ejemplo completo (descomenta las opciones que quieras usar):
+# github: marcosraimundolozina
+# ko_fi: marcosraimundolozina
+# custom: ["https://www.paypal.me/marcosraimundolozina"]
+
+# Para más información:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
+
