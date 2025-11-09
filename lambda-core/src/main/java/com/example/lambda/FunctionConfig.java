@@ -3,8 +3,6 @@ package com.example.lambda;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.example.lambda.handlers.HelloHandler;
-import com.example.lambda.model.HelloRequest;
-import com.example.lambda.validation.RequestValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -27,11 +25,9 @@ public class FunctionConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(FunctionConfig.class);
     private final HelloHandler helloHandler;
-    private final RequestValidator requestValidator;
 
-    public FunctionConfig(HelloHandler helloHandler, RequestValidator requestValidator) {
+    public FunctionConfig(HelloHandler helloHandler) {
         this.helloHandler = helloHandler;
-        this.requestValidator = requestValidator;
     }
 
     /**
@@ -76,21 +72,13 @@ public class FunctionConfig {
                 String name = queryStringParameters != null ? queryStringParameters.get("name") : null;
                 String greeting;
                 
-                if (name != null) {
-                    // Validate request with Bean Validation (reactively)
-                    HelloRequest helloRequest = new HelloRequest(name);
-                    greeting = requestValidator.validate(helloRequest)
-                        .flatMap(validatedRequest -> 
-                            helloHandler.processGreeting(validatedRequest.getName())
-                                .timeout(java.time.Duration.ofSeconds(5))
-                                .onErrorResume(error -> {
-                                    logger.warn("Error processing greeting, using default", error);
-                                    return Mono.just("Hello, World!");
-                                })
-                        )
-                        .onErrorResume(com.example.lambda.validation.RequestValidator.ValidationException.class, e -> {
-                            logger.warn("Validation error: {}", e.getMessage());
-                            return Mono.just("Hello, World!"); // Fallback on validation error
+                if (name != null && !name.trim().isEmpty()) {
+                    // Process greeting reactively
+                    greeting = helloHandler.processGreeting(name)
+                        .timeout(java.time.Duration.ofSeconds(5))
+                        .onErrorResume(error -> {
+                            logger.warn("Error processing greeting, using default", error);
+                            return Mono.just("Hello, World!");
                         })
                         .block(); // Necessary boundary: Lambda requires synchronous return
                 } else {

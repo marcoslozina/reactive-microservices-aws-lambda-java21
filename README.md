@@ -8,6 +8,21 @@
 
 Proyecto de microservicios reactivos con Spring Boot 3.x, Java 21, Project Reactor y AWS Lambda, configurado con arquitectura multi-módulo, build reproducible y despliegue local/nube. Listo para producción con soporte para compilación nativa con GraalVM.
 
+> 📖 **Este proyecto es el código de ejemplo del ebook "Microservicios Reactivos con Spring Boot y AWS Lambda"**. Cada sección del README está enlazada al capítulo correspondiente del libro para una mejor comprensión del código.
+
+### 📚 Sobre el Ebook
+
+Este repositorio contiene el código fuente completo que acompaña al ebook **"Microservicios Reactivos con Spring Boot y AWS Lambda"**. El libro cubre:
+
+- Fundamentos de microservicios reactivos
+- Arquitectura serverless con AWS Lambda
+- Spring Boot 3.x y Project Reactor
+- Compilación nativa con GraalVM
+- CI/CD con GitHub Actions
+- Y mucho más...
+
+> 💡 **¿Dónde obtener el ebook?** [Enlace al ebook](#) - Reemplaza este enlace con la URL real de tu ebook
+
 ## 📋 Tabla de Contenidos
 
 - [Características](#-características)
@@ -28,6 +43,9 @@ Proyecto de microservicios reactivos con Spring Boot 3.x, Java 21, Project React
 - [Licencia](#-licencia)
 
 ## 🚀 Características
+
+> 📖 **Capítulo 1: Introducción a Microservicios Reactivos** - [Ver capítulo](#)  
+> 📖 **Capítulo 2: Stack Tecnológico** - [Ver capítulo](#)
 
 ### Tecnologías Core
 - ✅ **Java 21** - Última versión LTS con virtual threads y mejoras de rendimiento
@@ -58,6 +76,8 @@ Proyecto de microservicios reactivos con Spring Boot 3.x, Java 21, Project React
 - ✅ **Build reproducible** - Builds consistentes en todos los entornos
 
 ## 🏗️ Arquitectura
+
+> 📖 **Capítulo 3: Arquitectura de Microservicios Reactivos** - [Ver capítulo](#)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -94,6 +114,8 @@ Proyecto de microservicios reactivos con Spring Boot 3.x, Java 21, Project React
 
 ## 📦 Requisitos
 
+> 📖 **Capítulo 4: Configuración del Entorno de Desarrollo** - [Ver capítulo](#)
+
 ### Obligatorios
 - **Java 21** (JDK 21) - [Descargar OpenJDK 21](https://adoptium.net/)
 - **Gradle 8.5+** (incluido con wrapper)
@@ -110,6 +132,8 @@ Proyecto de microservicios reactivos con Spring Boot 3.x, Java 21, Project React
 - **IntelliJ IDEA** o **VS Code** - IDE con soporte Java/Kotlin
 
 ## 🚀 Instalación Rápida
+
+> 📖 **Capítulo 5: Configuración Inicial del Proyecto** - [Ver capítulo](#)
 
 ### 1. Clonar el repositorio
 
@@ -140,6 +164,8 @@ cp .env.example .env
 ✅ **¡Listo!** El proyecto está compilado y los tests pasan.
 
 ## 💻 Desarrollo Local
+
+> 📖 **Capítulo 6: Desarrollo Local con LocalStack y SAM** - [Ver capítulo](#)
 
 ### Iniciar LocalStack
 
@@ -224,6 +250,8 @@ make localstack-down
 
 ## ☁️ Despliegue a AWS
 
+> 📖 **Capítulo 7: Despliegue a AWS con SAM** - [Ver capítulo](#)
+
 ### Prerequisitos
 
 1. **AWS CLI configurado**:
@@ -282,6 +310,8 @@ sam deploy
 
 ## ⚙️ Configuración
 
+> 📖 **Capítulo 8: Configuración y Variables de Entorno** - [Ver capítulo](#)
+
 ### Cambiar la función activa
 
 Por defecto se usa la función `hello`. Para cambiar:
@@ -333,6 +363,8 @@ spring:
 
 ## 🧪 Testing
 
+> 📖 **Capítulo 9: Testing de Microservicios Reactivos** - [Ver capítulo](#)
+
 ### Tests unitarios
 
 ```bash
@@ -369,6 +401,8 @@ sam local invoke "ReactiveFunction" --event events/hello-post.json
 ```
 
 ## 📊 Observabilidad
+
+> 📖 **Capítulo 10: Observabilidad y Monitoreo** - [Ver capítulo](#)
 
 ### Métricas con Micrometer
 
@@ -430,6 +464,8 @@ export DEVELOPMENT_MODE=false
 
 ## 🎯 Compilación Nativa
 
+> 📖 **Capítulo 11: Compilación Nativa con GraalVM** - [Ver capítulo](#)
+
 ### Requisitos
 
 - **GraalVM JDK 21** instalado
@@ -475,6 +511,8 @@ El proyecto incluye configuración automática para GraalVM Native:
 
 ## 🔄 CI/CD
 
+> 📖 **Capítulo 12: CI/CD con GitHub Actions** - [Ver capítulo](#)
+
 ### GitHub Actions
 
 El proyecto incluye workflow CI/CD en `.github/workflows/ci.yml`:
@@ -510,6 +548,8 @@ El workflow se ejecuta automáticamente en:
 ```
 
 ## 📁 Estructura del Proyecto
+
+> 📖 **Capítulo 13: Organización del Código y Arquitectura Multi-módulo** - [Ver capítulo](#)
 
 ```
 microservicios-reactivos-springboot-aws-lambda/
@@ -560,6 +600,8 @@ microservicios-reactivos-springboot-aws-lambda/
 ```
 
 ## 🐛 Troubleshooting
+
+> 📖 **Capítulo 14: Solución de Problemas Comunes** - [Ver capítulo](#)
 
 ### Error: "Cannot find handler"
 
@@ -688,7 +730,9 @@ Las contribuciones son bienvenidas. Por favor:
 
 ## ☕ Donaciones
 
-Si este proyecto o el libro te fueron útiles, podés apoyar el desarrollo con una donación. Tu apoyo ayuda a mantener y mejorar este tipo de contenido educativo.
+Si este proyecto o el ebook te fueron útiles, podés apoyar el desarrollo con una donación. Tu apoyo ayuda a mantener y mejorar este tipo de contenido educativo.
+
+> 📖 **¿Te gustó el código?** [Obtén el ebook completo](#) para entender en profundidad cada concepto y práctica implementada en este proyecto.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/codefuel)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=4TYGJ5S8CLX8J)
@@ -705,6 +749,12 @@ Si este proyecto o el libro te fueron útiles, podés apoyar el desarrollo con u
 - Usa mensajes de commit descriptivos
 
 ## 📚 Recursos Adicionales
+
+### 📖 Ebook y Documentación
+
+- **Ebook: Microservicios Reactivos con Spring Boot y AWS Lambda** - [Obtener ebook](#) - Reemplaza con la URL real
+- **Código fuente completo** - Este repositorio contiene todos los ejemplos del libro
+- **Capítulos del ebook** - Cada sección del README está enlazada a su capítulo correspondiente
 
 ### Documentación Oficial
 
