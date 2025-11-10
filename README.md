@@ -6,78 +6,42 @@
 [![AWS Lambda](https://img.shields.io/badge/AWS-Lambda-FF9900.svg?logo=amazon-aws)](https://aws.amazon.com/lambda/)
 [![License](https://img.shields.io/badge/license-Copyright-blue.svg)](LICENSE)
 
-Proyecto de microservicios reactivos con Spring Boot 3.x, Java 21, Project Reactor y AWS Lambda, configurado con arquitectura multi-módulo, build reproducible y despliegue local/nube. Listo para producción con soporte para compilación nativa con GraalVM.
+Proyecto de microservicios reactivos con Spring Boot 3.x, Java 21, Project Reactor y AWS Lambda. Arquitectura multi-módulo, build reproducible y despliegue local/nube. Listo para producción con soporte para compilación nativa con GraalVM.
 
-> 📖 **Este proyecto es el código de ejemplo del ebook "Microservicios Reactivos con Spring Boot y AWS Lambda"**. Cada sección del README está enlazada al capítulo correspondiente del libro para una mejor comprensión del código.
-
-### 📚 Sobre el Ebook
-
-Este repositorio contiene el código fuente completo que acompaña al ebook **"Microservicios Reactivos con Spring Boot y AWS Lambda"**. El libro cubre:
-
-- Fundamentos de microservicios reactivos
-- Arquitectura serverless con AWS Lambda
-- Spring Boot 3.x y Project Reactor
-- Compilación nativa con GraalVM
-- CI/CD con GitHub Actions
-- Y mucho más...
-
-> 💡 **¿Dónde obtener el ebook?** [Enlace al ebook](#) - Reemplaza este enlace con la URL real de tu ebook
+> 📖 **Este proyecto es el código de ejemplo del ebook "Microservicios Reactivos con Spring Boot y AWS Lambda"**. 
+> 
+> **Obtén el ebook:**
+> - 📚 [Amazon Kindle](https://www.amazon.com/dp/B0G1L1FFK6)
+> - 🛒 [Hotmart](https://go.hotmart.com/O102857613J?dp=1)
+> - 💳 [Gumroad](https://marcoslozina.gumroad.com/l/tporu)
 
 ## 📋 Tabla de Contenidos
 
 - [Características](#-características)
 - [Arquitectura](#-arquitectura)
-- [Requisitos](#-requisitos)
 - [Instalación Rápida](#-instalación-rápida)
 - [Desarrollo Local](#-desarrollo-local)
 - [Despliegue a AWS](#-despliegue-a-aws)
-- [Configuración](#-configuración)
 - [Testing](#-testing)
-- [Observabilidad](#-observabilidad)
 - [Compilación Nativa](#-compilación-nativa)
 - [CI/CD](#cicd)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Troubleshooting](#-troubleshooting)
-- [Contribuir](#-contribuir)
-- [Donaciones](#-donaciones)
-- [Licencia](#-licencia)
 
 ## 🚀 Características
 
-> 📖 **Capítulo 1: Introducción a Microservicios Reactivos** - [Ver capítulo](#)  
-> 📖 **Capítulo 2: Stack Tecnológico** - [Ver capítulo](#)
-
-### Tecnologías Core
-- ✅ **Java 21** - Última versión LTS con virtual threads y mejoras de rendimiento
-- ✅ **Spring Boot 3.3.1** - Framework de microservicios reactivos
-- ✅ **Spring WebFlux** - Programación reactiva no bloqueante
+**Stack Tecnológico:**
+- ✅ **Java 21** - LTS con virtual threads
+- ✅ **Spring Boot 3.3.1** + **Spring WebFlux** - Programación reactiva no bloqueante
 - ✅ **Project Reactor** - Mono/Flux para programación asíncrona
 - ✅ **Spring Cloud Function** - Funciones serverless portables
 - ✅ **AWS Lambda** - Ejecución serverless en la nube
-
-### Infraestructura y DevOps
 - ✅ **GraalVM Native Image** - Compilación nativa para cold starts más rápidos
 - ✅ **AWS SAM** - Framework para aplicaciones serverless
-- ✅ **LocalStack** - Emulación de AWS local para desarrollo
-- ✅ **Docker Compose** - Orquestación de servicios locales
+- ✅ **LocalStack** - Emulación de AWS local
 - ✅ **GitHub Actions** - CI/CD automatizado
-
-### Observabilidad y Calidad
-- ✅ **Micrometer** - Métricas y monitoreo
-- ✅ **Logstash Logback Encoder** - Logs estructurados en JSON
-- ✅ **Spring Actuator** - Health checks y métricas
-- ✅ **JUnit 5** - Framework de testing moderno
-- ✅ **Reactor Test** - Testing de código reactivo
-
-### Arquitectura
-- ✅ **Multi-módulo Gradle** - Organización modular del código
-- ✅ **Gradle Kotlin DSL** - Configuración type-safe
-- ✅ **BuildSrc con convenciones** - Plugins y configuración compartida
-- ✅ **Build reproducible** - Builds consistentes en todos los entornos
+- ✅ **Micrometer** + **Spring Actuator** - Observabilidad y métricas
 
 ## 🏗️ Arquitectura
-
-> 📖 **Capítulo 3: Arquitectura de Microservicios Reactivos** - [Ver capítulo](#)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -112,28 +76,9 @@ Este repositorio contiene el código fuente completo que acompaña al ebook **"M
 4. **Function** → Procesa con Project Reactor (Mono/Flux)
 5. **Response** → JSON con status code y headers
 
-## 📦 Requisitos
-
-> 📖 **Capítulo 4: Configuración del Entorno de Desarrollo** - [Ver capítulo](#)
-
-### Obligatorios
-- **Java 21** (JDK 21) - [Descargar OpenJDK 21](https://adoptium.net/)
-- **Gradle 8.5+** (incluido con wrapper)
-- **Docker** y **Docker Compose** - [Instalar Docker](https://docs.docker.com/get-docker/)
-- **AWS SAM CLI** - [Instalar SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
-
-### Opcionales (para compilación nativa)
-- **GraalVM JDK 21** - [Descargar GraalVM](https://www.graalvm.org/downloads/)
-- **Native Image** - Incluido con GraalVM
-
-### Recomendados
-- **AWS CLI** - Para despliegue a la nube
-- **Postman/Insomnia** - Para probar endpoints
-- **IntelliJ IDEA** o **VS Code** - IDE con soporte Java/Kotlin
-
 ## 🚀 Instalación Rápida
 
-> 📖 **Capítulo 5: Configuración Inicial del Proyecto** - [Ver capítulo](#)
+**Requisitos:** Java 21, Gradle 8.5+ (incluido), Docker, AWS SAM CLI
 
 ### 1. Clonar el repositorio
 
@@ -310,8 +255,6 @@ sam deploy
 
 ## ⚙️ Configuración
 
-> 📖 **Capítulo 8: Configuración y Variables de Entorno** - [Ver capítulo](#)
-
 ### Cambiar la función activa
 
 Por defecto se usa la función `hello`. Para cambiar:
@@ -363,8 +306,6 @@ spring:
 
 ## 🧪 Testing
 
-> 📖 **Capítulo 9: Testing de Microservicios Reactivos** - [Ver capítulo](#)
-
 ### Tests unitarios
 
 ```bash
@@ -401,8 +342,6 @@ sam local invoke "ReactiveFunction" --event events/hello-post.json
 ```
 
 ## 📊 Observabilidad
-
-> 📖 **Capítulo 10: Observabilidad y Monitoreo** - [Ver capítulo](#)
 
 ### Métricas con Micrometer
 
@@ -464,8 +403,6 @@ export DEVELOPMENT_MODE=false
 
 ## 🎯 Compilación Nativa
 
-> 📖 **Capítulo 11: Compilación Nativa con GraalVM** - [Ver capítulo](#)
-
 ### Requisitos
 
 - **GraalVM JDK 21** instalado
@@ -511,8 +448,6 @@ El proyecto incluye configuración automática para GraalVM Native:
 
 ## 🔄 CI/CD
 
-> 📖 **Capítulo 12: CI/CD con GitHub Actions** - [Ver capítulo](#)
-
 ### GitHub Actions
 
 El proyecto incluye workflow CI/CD en `.github/workflows/ci.yml`:
@@ -548,8 +483,6 @@ El workflow se ejecuta automáticamente en:
 ```
 
 ## 📁 Estructura del Proyecto
-
-> 📖 **Capítulo 13: Organización del Código y Arquitectura Multi-módulo** - [Ver capítulo](#)
 
 ```
 microservicios-reactivos-springboot-aws-lambda/
@@ -600,8 +533,6 @@ microservicios-reactivos-springboot-aws-lambda/
 ```
 
 ## 🐛 Troubleshooting
-
-> 📖 **Capítulo 14: Solución de Problemas Comunes** - [Ver capítulo](#)
 
 ### Error: "Cannot find handler"
 
@@ -727,20 +658,6 @@ Las contribuciones son bienvenidas. Por favor:
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-
-## ☕ Donaciones
-
-Si este proyecto o el ebook te fueron útiles, podés apoyar el desarrollo con una donación. Tu apoyo ayuda a mantener y mejorar este tipo de contenido educativo.
-
-> 📖 **¿Te gustó el código?** [Obtén el ebook completo](#) para entender en profundidad cada concepto y práctica implementada en este proyecto.
-
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/codefuel)
-[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=4TYGJ5S8CLX8J)
-
-- ☕ [Buy Me a Coffee](https://buymeacoffee.com/codefuel)
-- 💳 [PayPal Donate](https://www.paypal.com/donate/?hosted_button_id=4TYGJ5S8CLX8J)
-
-
 ### Guía de contribución
 
 - Sigue las convenciones de código del proyecto
@@ -750,11 +667,11 @@ Si este proyecto o el ebook te fueron útiles, podés apoyar el desarrollo con u
 
 ## 📚 Recursos Adicionales
 
-### 📖 Ebook y Documentación
+### 📖 Ebook
 
-- **Ebook: Microservicios Reactivos con Spring Boot y AWS Lambda** - [Obtener ebook](#) - Reemplaza con la URL real
-- **Código fuente completo** - Este repositorio contiene todos los ejemplos del libro
-- **Capítulos del ebook** - Cada sección del README está enlazada a su capítulo correspondiente
+- 📚 [Amazon Kindle](https://www.amazon.com/dp/B0G1L1FFK6) - Obtén el ebook completo
+- 🛒 [Hotmart](https://go.hotmart.com/O102857613J?dp=1) - Versión digital
+- 💳 [Gumroad](https://marcoslozina.gumroad.com/l/tporu) - Descarga directa
 
 ### Documentación Oficial
 
@@ -786,27 +703,15 @@ Creado como proyecto de referencia para microservicios reactivos serverless con 
 
 Copyright (c) 2024 Marcos Raimundo Lozina. Todos los derechos reservados.
 
-## 💝 Donaciones
+## 💝 Apoyo al Proyecto
 
-Si este proyecto te ha sido útil, considera apoyar su desarrollo con una donación. Tu contribución ayuda a mantener y mejorar este proyecto.
+Si este proyecto te ha sido útil, considera apoyar su desarrollo:
 
-**Formas de donar:**
-
-- 💳 **GitHub Sponsors** - Haz clic en el botón "Sponsor" en la parte superior del repositorio
-- ☕ **Buy Me a Coffee** - Apoya con una donación rápida (si lo configuraste)
-- 💰 **PayPal** - Donación directa via PayPal (si lo configuraste)
-- 🎯 **Ko-fi** - Apoya el proyecto con un café virtual (si lo configuraste)
-
-**Nota:** Las donaciones son completamente opcionales pero muy apreciadas. Cualquier contribución ayuda a:
-
-- Mantener el proyecto actualizado
-- Mejorar la documentación
-- Agregar nuevas características
-- Responder a issues y pull requests
+- 📖 **Obtén el ebook completo** - [Amazon](https://www.amazon.com/dp/B0G1L1FFK6) | [Hotmart](https://go.hotmart.com/O102857613J?dp=1) | [Gumroad](https://marcoslozina.gumroad.com/l/tporu)
+- ⭐ **Dale una estrella** al repositorio si te fue útil
+- 🐛 **Reporta bugs** o sugiere mejoras abriendo un issue
 
 ¡Gracias por tu apoyo! 🙏
-
-**Para configurar donaciones:** Edita el archivo `.github/FUNDING.yml` y habilita las opciones que desees usar. Luego ve a Settings → Features → Sponsorships en GitHub para activar el botón.
 
 ---
 
