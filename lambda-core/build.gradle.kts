@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     id("org.springframework.boot")
     id("org.graalvm.buildtools.native")
@@ -18,6 +20,7 @@ dependencies {
     
     // AWS Lambda Events
     implementation("com.amazonaws:aws-lambda-java-events:3.12.0")
+    implementation("com.amazonaws:aws-lambda-java-serialization:1.1.2")
     
     // JSON Processing
     implementation("com.fasterxml.jackson.core:jackson-databind")
@@ -64,6 +67,10 @@ graalvmNative {
 
 tasks.named("nativeCompile") {
     dependsOn("bootJar")
+}
+
+tasks.withType<BootJar> {
+    archiveFileName.set("lambda-core.jar")
 }
 
 

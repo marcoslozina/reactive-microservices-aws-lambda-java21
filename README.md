@@ -61,6 +61,62 @@ sam local invoke "ReactiveFunction" --event events/hello.json
 sam local start-api
 ```
 
+## 🐳 Ejecución con Docker
+
+### Imagen de la aplicación
+
+```bash
+# Construir imagen multi-stage (Java 21 + Spring Boot)
+docker build -t reactive-lambda .
+
+# Levantar la función como servicio WebFlux en localhost (usa 8081 si 8080 está ocupado)
+docker run --rm -d -p 8081:8080 --name reactive-lambda reactive-lambda
+
+# Smoke test sobre el endpoint y los actuators expuestos en el contenedor
+curl -i "http://localhost:8081/hello?name=Marcos"
+curl -i "http://localhost:8081/actuator/health"
+```
+
+Ejemplo de respuesta:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+{"message":"ok","name":"Marcos","greeting":"Hello, Marcos!","timestamp":"2025-12-07T22:25:41.234Z"}
+```
+
+### Tooling containerizado (Gradle + SAM)
+
+```bash
+# Bash / zsh
+docker run --rm -it \
+  -v ${PWD}:/workspace \
+  -w /workspace \
+  public.ecr.aws/sam/build-java21:latest \
+  bash -lc "./gradlew test"
+
+docker run --rm -it \
+  -v ${PWD}:/workspace \
+  -w /workspace \
+  public.ecr.aws/sam/build-java21:latest \
+  bash -lc "sam build --template lambda-infra/template.yaml && sam validate"
+```
+
+```powershell
+# PowerShell
+docker run --rm -it `
+  -v ${PWD}:/workspace `
+  -w /workspace `
+  public.ecr.aws/sam/build-java21:latest `
+  bash -lc "./gradlew test"
+
+docker run --rm -it `
+  -v ${PWD}:/workspace `
+  -w /workspace `
+  public.ecr.aws/sam/build-java21:latest `
+  bash -lc "sam build --template lambda-infra/template.yaml && sam validate"
+```
+
 ## ☁️ Despliegue a AWS
 
 ```bash
