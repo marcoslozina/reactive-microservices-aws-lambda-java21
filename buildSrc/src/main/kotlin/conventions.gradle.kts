@@ -12,15 +12,15 @@ class ConventionsPlugin : Plugin<Project> {
         with(project) {
             configure<JavaPluginExtension> {
                 toolchain {
-                    languageVersion.set(JavaLanguageVersion.of(21))
+                    languageVersion.set(JavaLanguageVersion.of(25))
                 }
-                sourceCompatibility = org.gradle.api.JavaVersion.VERSION_21
-                targetCompatibility = org.gradle.api.JavaVersion.VERSION_21
+                sourceCompatibility = org.gradle.api.JavaVersion.VERSION_25
+                targetCompatibility = org.gradle.api.JavaVersion.VERSION_25
             }
 
             tasks.withType<JavaCompile> {
                 options.encoding = "UTF-8"
-                options.release.set(21)
+                options.release.set(25)
             }
 
             tasks.withType<Test> {

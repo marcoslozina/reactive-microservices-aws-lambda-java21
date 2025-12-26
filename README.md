@@ -1,12 +1,12 @@
 # Microservicios Reactivos Spring Boot AWS Lambda
 
-[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.org/)
+[![Java](https://img.shields.io/badge/Java-25-orange.svg)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.1-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![Gradle](https://img.shields.io/badge/Gradle-8.5-02303A.svg?logo=gradle)](https://gradle.org/)
 [![AWS Lambda](https://img.shields.io/badge/AWS-Lambda-FF9900.svg?logo=amazon-aws)](https://aws.amazon.com/lambda/)
 [![License](https://img.shields.io/badge/license-Copyright-blue.svg)](LICENSE)
 
-Código fuente del ebook **"Microservicios Reactivos con Spring Boot y AWS Lambda"**. Proyecto completo con Spring Boot 3.x, Java 21, Project Reactor y AWS Lambda. Listo para producción con soporte para compilación nativa con GraalVM.
+Código fuente del ebook **"Microservicios Reactivos con Spring Boot y AWS Lambda"**. Proyecto completo con Spring Boot 3.x, Java 25, Project Reactor y AWS Lambda. Listo para producción con soporte para compilación nativa con GraalVM.
 
 > 📖 **Obtén el ebook completo:**
 > - 📚 [Amazon Kindle](https://www.amazon.com/dp/B0G1L1FFK6)
@@ -15,7 +15,7 @@ Código fuente del ebook **"Microservicios Reactivos con Spring Boot y AWS Lambd
 
 ## 🚀 Stack Tecnológico
 
-- **Java 21** + **Spring Boot 3.3.1** + **Spring WebFlux**
+- **Java 25** + **Spring Boot 3.3.1** + **Spring WebFlux**
 - **Project Reactor** (Mono/Flux)
 - **Spring Cloud Function** + **AWS Lambda**
 - **GraalVM Native Image** (compilación nativa)
@@ -33,7 +33,7 @@ API Gateway HTTP API → AWS Lambda → Spring Cloud Function → Project Reacto
 
 ## 🚀 Inicio Rápido
 
-**Requisitos:** Java 21, Gradle 8.5+ (incluido), Docker, AWS SAM CLI
+**Requisitos:** Java 25, Gradle 8.5+ (incluido), Docker, AWS SAM CLI
 
 ```bash
 # Clonar y compilar
@@ -135,7 +135,7 @@ sam deploy --guided
 ## 🎯 Compilación Nativa
 
 ```bash
-export JAVA_HOME=/path/to/graalvm-jdk-21
+export JAVA_HOME=/path/to/graalvm-jdk-25
 ./gradlew :lambda-core:nativeCompile
 ```
 
