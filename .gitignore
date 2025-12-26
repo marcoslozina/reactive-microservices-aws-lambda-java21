@@ -196,3 +196,7 @@ ENV/
 *.lock
 package-lock.json
 yarn.lock
+
+gradle-8.10/
+gradle-8.10-bin.zip
+
