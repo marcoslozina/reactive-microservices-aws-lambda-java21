@@ -10,6 +10,8 @@ COPY gradle.properties gradle.properties
 COPY gradle gradle
 COPY buildSrc buildSrc
 COPY lambda-core lambda-core
+COPY lambda-infra lambda-infra
+COPY lambda-tests lambda-tests
 
 RUN sed -i 's/\r$//' gradlew && chmod +x gradlew
 RUN ./gradlew :lambda-core:bootJar -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon

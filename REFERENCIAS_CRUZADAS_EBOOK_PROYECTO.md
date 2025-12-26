@@ -5,6 +5,8 @@
 **Fecha:** Diciembre 2025  
 **Versión del Proyecto:** Java 25, Spring Boot 3.4.13, Gradle 9.2.1
 
+**✅ Verificación Java 25:** Este proyecto está completamente configurado y probado con Java 25.0.1. Compila, levanta localmente (con `./gradlew :lambda-core:bootRun`) y funciona en Docker. El runtime de AWS Lambda está configurado como `java25` en el template SAM.
+
 ---
 
 ## 📋 Tabla de Contenidos
@@ -48,6 +50,9 @@
 | 1.6 Creación de la primera función Lambda | Función Lambda básica | `lambda-core/src/main/java/com/example/lambda/FunctionConfig.java` | Líneas 43-115 |
 | 1.7 Estructura multi-módulo | Estructura real del proyecto | `settings.gradle.kts` | Todo el archivo |
 | 1.8 Verificación final del entorno | Comandos de verificación | `README.md` | Líneas 39-50 |
+| 1.8 Verificación final del entorno | Verificación Java 25 | `buildSrc/src/main/kotlin/conventions.gradle.kts` | Líneas 10-22 |
+| 1.8 Verificación final del entorno | Levantar aplicación local | `./gradlew :lambda-core:bootRun` | Comando Gradle |
+| 1.8 Verificación final del entorno | Levantar con Docker | `Dockerfile` + `docker build/run` | Todo el archivo |
 | 1.9 Configuración de Variables de Entorno y Profiles | Profiles Spring | `lambda-core/src/main/resources/application.yml` | Todo el archivo |
 | 1.9.1 Archivo application.yml base | Configuración base | `lambda-core/src/main/resources/application.yml` | Todo el archivo |
 | 1.9.2 Archivo application-dev.yml (LocalStack) | Configuración desarrollo | `lambda-core/src/main/resources/application-dev.yml` | Todo el archivo |
@@ -551,4 +556,31 @@ Este documento debe actualizarse cuando:
 **Última actualización:** Diciembre 2025  
 **Versión del Proyecto:** Java 25, Spring Boot 3.4.13, Gradle 9.2.1  
 **Versión del Ebook:** Actualizada para Java 25 LTS
+
+---
+
+## ✅ Verificación de Java 25 en el Proyecto
+
+Este proyecto está **100% configurado y probado con Java 25**. La verificación incluye:
+
+### Configuración Java 25
+- ✅ **Toolchain:** `buildSrc/src/main/kotlin/conventions.gradle.kts` - Java 25 configurado
+- ✅ **Source/Target:** `VERSION_25` en todas las configuraciones
+- ✅ **Runtime AWS Lambda:** `java25` en `lambda-infra/template.yaml`
+- ✅ **Docker:** Imagen base `eclipse-temurin:25-jre-jammy` y `gradle:9.2.1-jdk25`
+
+### Ejecución Verificada
+- ✅ **Compilación:** `./gradlew clean build` - Compila correctamente con Java 25
+- ✅ **Ejecución Local:** `./gradlew :lambda-core:bootRun` - Levanta en puerto 8080
+- ✅ **Docker:** `docker build/run` - Funciona correctamente en contenedor
+- ✅ **Endpoints:** `/hello` y `/actuator/health` responden correctamente
+
+### Versión Java Verificada
+```
+openjdk version "25.0.1" 2025-10-21
+OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing)
+```
+
+**Conclusión:** El proyecto está completamente funcional con Java 25 y puede seguirse paso a paso desde el ebook.
 
