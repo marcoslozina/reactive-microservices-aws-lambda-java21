@@ -1,12 +1,12 @@
 # Microservicios Reactivos Spring Boot AWS Lambda
 
 [![Java](https://img.shields.io/badge/Java-25-orange.svg)](https://openjdk.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.1-brightgreen.svg)](https://spring.io/projects/spring-boot)
-[![Gradle](https://img.shields.io/badge/Gradle-8.5-02303A.svg?logo=gradle)](https://gradle.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.13-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Gradle](https://img.shields.io/badge/Gradle-9.2.1-02303A.svg?logo=gradle)](https://gradle.org/)
 [![AWS Lambda](https://img.shields.io/badge/AWS-Lambda-FF9900.svg?logo=amazon-aws)](https://aws.amazon.com/lambda/)
 [![License](https://img.shields.io/badge/license-Copyright-blue.svg)](LICENSE)
 
-Código fuente del ebook **"Microservicios Reactivos con Spring Boot y AWS Lambda"**. Proyecto completo con Spring Boot 3.x, Java 25, Project Reactor y AWS Lambda. Listo para producción con soporte para compilación nativa con GraalVM.
+Código fuente del ebook **"Microservicios Reactivos con Spring Boot y AWS Lambda"**. Proyecto completo con Spring Boot 3.4.13, Java 25, Project Reactor y AWS Lambda. Listo para producción con soporte para compilación nativa con GraalVM.
 
 > 📖 **Obtén el ebook completo:**
 > - 📚 [Amazon Kindle](https://www.amazon.com/dp/B0G1L1FFK6)
@@ -15,7 +15,8 @@ Código fuente del ebook **"Microservicios Reactivos con Spring Boot y AWS Lambd
 
 ## 🚀 Stack Tecnológico
 
-- **Java 25** + **Spring Boot 3.3.1** + **Spring WebFlux**
+- **Java 25** + **Spring Boot 3.4.13** + **Spring WebFlux**
+- **Spring Cloud Function 2024.0.0**
 - **Project Reactor** (Mono/Flux)
 - **Spring Cloud Function** + **AWS Lambda**
 - **GraalVM Native Image** (compilación nativa)
@@ -33,7 +34,7 @@ API Gateway HTTP API → AWS Lambda → Spring Cloud Function → Project Reacto
 
 ## 🚀 Inicio Rápido
 
-**Requisitos:** Java 25, Gradle 8.5+ (incluido), Docker, AWS SAM CLI
+**Requisitos:** Java 25, Gradle 9.2.1+ (incluido), Docker, AWS SAM CLI
 
 ```bash
 # Clonar y compilar
@@ -66,7 +67,7 @@ sam local start-api
 ### Imagen de la aplicación
 
 ```bash
-# Construir imagen multi-stage (Java 21 + Spring Boot)
+# Construir imagen multi-stage (Java 25 + Spring Boot)
 docker build -t reactive-lambda .
 
 # Levantar la función como servicio WebFlux en localhost (usa 8081 si 8080 está ocupado)
@@ -92,13 +93,13 @@ Content-Type: application/json
 docker run --rm -it \
   -v ${PWD}:/workspace \
   -w /workspace \
-  public.ecr.aws/sam/build-java21:latest \
+  public.ecr.aws/sam/build-java25:latest \
   bash -lc "./gradlew test"
 
 docker run --rm -it \
   -v ${PWD}:/workspace \
   -w /workspace \
-  public.ecr.aws/sam/build-java21:latest \
+  public.ecr.aws/sam/build-java25:latest \
   bash -lc "sam build --template lambda-infra/template.yaml && sam validate"
 ```
 
@@ -107,13 +108,13 @@ docker run --rm -it \
 docker run --rm -it `
   -v ${PWD}:/workspace `
   -w /workspace `
-  public.ecr.aws/sam/build-java21:latest `
+  public.ecr.aws/sam/build-java25:latest `
   bash -lc "./gradlew test"
 
 docker run --rm -it `
   -v ${PWD}:/workspace `
   -w /workspace `
-  public.ecr.aws/sam/build-java21:latest `
+  public.ecr.aws/sam/build-java25:latest `
   bash -lc "sam build --template lambda-infra/template.yaml && sam validate"
 ```
 
@@ -211,7 +212,7 @@ Si este proyecto te ha sido útil:
 
 ## 📄 Licencia
 
-Copyright (c) 2024 Marcos Raimundo Lozina. Todos los derechos reservados.
+Copyright (c) 2025 Marcos Raimundo Lozina. Todos los derechos reservados.
 
 Este proyecto está protegido por derechos de autor. Ver el archivo [LICENSE](LICENSE) para detalles completos.
 

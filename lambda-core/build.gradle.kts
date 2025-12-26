@@ -5,7 +5,22 @@ plugins {
     id("org.graalvm.buildtools.native")
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("org.ow2.asm:asm:9.8")
+        force("org.ow2.asm:asm-commons:9.8")
+        force("org.ow2.asm:asm-tree:9.8")
+        force("org.ow2.asm:asm-analysis:9.8")
+    }
+}
+
 dependencies {
+    // ASM 9.8 para soporte de Java 25
+    implementation("org.ow2.asm:asm:9.8")
+    implementation("org.ow2.asm:asm-commons:9.8")
+    implementation("org.ow2.asm:asm-tree:9.8")
+    implementation("org.ow2.asm:asm-analysis:9.8")
+    
     // Spring Boot WebFlux
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     
@@ -16,7 +31,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-function-context")
     implementation("org.springframework.cloud:spring-cloud-starter-function-web")
     implementation("org.springframework.cloud:spring-cloud-function-adapter-aws")
-    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2023.0.1"))
+    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2024.0.0"))
     
     // AWS Lambda Events
     implementation("com.amazonaws:aws-lambda-java-events:3.12.0")
@@ -63,6 +78,20 @@ graalvmNative {
             )
         }
     }
+}
+
+// Deshabilitar AOT para evitar problemas de compatibilidad con Spring Cloud Function
+tasks.named("processAot") {
+    enabled = false
+}
+tasks.named("compileAotJava") {
+    enabled = false
+}
+tasks.named("processAotResources") {
+    enabled = false
+}
+tasks.named("aotClasses") {
+    enabled = false
 }
 
 tasks.named("nativeCompile") {

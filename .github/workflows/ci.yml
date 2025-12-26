@@ -33,10 +33,10 @@ jobs:
         run: chmod +x gradlew || true
       
       - name: Build with Gradle
-        run: ./gradlew build -x test --no-daemon
+        run: ./gradlew build -x test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon
       
       - name: Run tests
-        run: ./gradlew test --no-daemon
+        run: ./gradlew test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon
       
       - name: Upload test results
         if: always()
@@ -110,7 +110,7 @@ jobs:
           use-installer: true
       
       - name: Build project
-        run: ./gradlew clean build -x test --no-daemon
+        run: ./gradlew clean build -x test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon
       
       - name: SAM Build
         working-directory: lambda-infra

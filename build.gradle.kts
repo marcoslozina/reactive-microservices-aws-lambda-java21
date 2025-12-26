@@ -1,7 +1,7 @@
 plugins {
     java
     id("io.spring.dependency-management") version "1.1.5"
-    id("org.springframework.boot") version "3.3.1" apply false
+    id("org.springframework.boot") version "3.4.13" apply false
     id("org.graalvm.buildtools.native") version "0.10.3" apply false
 }
 
@@ -20,8 +20,8 @@ subprojects {
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.boot:spring-boot-dependencies:3.3.1")
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:2023.0.1")
+        mavenBom("org.springframework.boot:spring-boot-dependencies:3.4.13")
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:2024.0.0")
     }
 }
 
