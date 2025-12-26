@@ -23,26 +23,52 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Set up JDK 25
+        id: setup-java
         uses: actions/setup-java@v4
         with:
           java-version: '25'
           distribution: 'temurin'
           cache: gradle
+        continue-on-error: true
+      
+      - name: Fallback to Docker if Java 25 not available
+        if: steps.setup-java.outcome == 'failure'
+        run: |
+          echo "Java 25 no disponible en setup-java, usando imagen Docker con Java 25"
+          docker pull eclipse-temurin:25-jdk-jammy
       
       - name: Verify Java version
+        if: steps.setup-java.outcome == 'success'
         run: java -version
       
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       
       - name: Verify Gradle wrapper
+        if: steps.setup-java.outcome == 'success'
         run: ./gradlew --version
       
-      - name: Build with Gradle
+      - name: Build with Gradle (native)
+        if: steps.setup-java.outcome == 'success'
         run: ./gradlew clean build -x test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon
       
-      - name: Run tests
+      - name: Build with Gradle (Docker fallback)
+        if: steps.setup-java.outcome == 'failure'
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace \
+            eclipse-temurin:25-jdk-jammy \
+            bash -c "chmod +x gradlew && ./gradlew clean build -x test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon"
+      
+      - name: Run tests (native)
+        if: steps.setup-java.outcome == 'success'
         run: ./gradlew test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon
+      
+      - name: Run tests (Docker fallback)
+        if: steps.setup-java.outcome == 'failure'
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace \
+            eclipse-temurin:25-jdk-jammy \
+            bash -c "chmod +x gradlew && ./gradlew test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon"
       
       - name: Upload test results
         if: always()
@@ -99,11 +125,13 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Set up JDK 25
+        id: setup-java-sam
         uses: actions/setup-java@v4
         with:
           java-version: '25'
           distribution: 'temurin'
           cache: gradle
+        continue-on-error: true
       
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -115,8 +143,16 @@ jobs:
         with:
           use-installer: true
       
-      - name: Build project
+      - name: Build project (native)
+        if: steps.setup-java-sam.outcome == 'success'
         run: ./gradlew clean build -x test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon
+      
+      - name: Build project (Docker fallback)
+        if: steps.setup-java-sam.outcome == 'failure'
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace \
+            eclipse-temurin:25-jdk-jammy \
+            bash -c "chmod +x gradlew && ./gradlew clean build -x test -x processAot -x compileAotJava -x processAotResources -x aotClasses --no-daemon"
       
       - name: SAM Build
         working-directory: lambda-infra
