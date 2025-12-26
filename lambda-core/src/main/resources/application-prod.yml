@@ -1,0 +1,9 @@
+# Configuración para producción en AWS Real
+aws:
+  dynamodb:
+    endpoint: null  # Usa AWS real
+  sqs:
+    endpoint: null  # Usa AWS real
+  sns:
+    endpoint: null  # Usa AWS real
+

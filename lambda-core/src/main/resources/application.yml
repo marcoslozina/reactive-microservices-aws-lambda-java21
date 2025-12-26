@@ -1,9 +1,16 @@
 spring:
+  application:
+    name: reactive-lambda
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
   main:
     web-application-type: reactive
   cloud:
     function:
       definition: hello
+
+aws:
+  region: ${AWS_REGION:us-east-1}
 
 logging:
   pattern:

@@ -15,14 +15,14 @@ Código fuente del ebook **"Microservicios Reactivos con Spring Boot y AWS Lambd
 
 ## 🚀 Stack Tecnológico
 
-- **Java 25** + **Spring Boot 3.4.13** + **Spring WebFlux**
-- **Spring Cloud Function 2024.0.0**
-- **Project Reactor** (Mono/Flux)
-- **Spring Cloud Function** + **AWS Lambda**
-- **GraalVM Native Image** (compilación nativa)
-- **AWS SAM** + **LocalStack** (desarrollo local)
-- **GitHub Actions** (CI/CD)
-- **Micrometer** + **Spring Actuator** (observabilidad)
+- **Java 25** + **Spring Boot 3.4.13** + **Spring WebFlux** *(Ebook: Sección 0.13, 0.14)*
+- **Spring Cloud Function 2024.0.0** *(Ebook: Sección 3.2)*
+- **Project Reactor** (Mono/Flux) *(Ebook: Sección 2.3)*
+- **Spring Cloud Function** + **AWS Lambda** *(Ebook: Sección 3.3, 3.4)*
+- **GraalVM Native Image** (compilación nativa) *(Ebook: Sección 4.2, 4.4)*
+- **AWS SAM** + **LocalStack** (desarrollo local) *(Ebook: Sección 1.5, 3.6)*
+- **GitHub Actions** (CI/CD) *(Ebook: Sección 6.6)*
+- **Micrometer** + **Spring Actuator** (observabilidad) *(Ebook: Sección 6.4)*
 
 ## 🏗️ Arquitectura
 
@@ -34,32 +34,32 @@ API Gateway HTTP API → AWS Lambda → Spring Cloud Function → Project Reacto
 
 ## 🚀 Inicio Rápido
 
-**Requisitos:** Java 25, Gradle 9.2.1+ (incluido), Docker, AWS SAM CLI
+**Requisitos:** Java 25, Gradle 9.2.1+ (incluido), Docker, AWS SAM CLI *(Ebook: Sección 1.2)*
 
 ```bash
 # Clonar y compilar
 git clone <repository-url>
-cd reactive-microservices-aws-lambda-java21
-./gradlew clean build
+cd reactive-microservices-aws-lambda-java25
+./gradlew clean build  # Ebook: Sección 1.4, 1.8
 
 # Ejecutar tests
-./gradlew test
+./gradlew test  # Ebook: Sección 2.8
 
 # Levantar aplicación local
-./gradlew :lambda-core:bootRun
+./gradlew :lambda-core:bootRun  # Ebook: Sección 1.6
 ```
 
 ## 💻 Desarrollo Local
 
 ```bash
 # Iniciar LocalStack
-docker-compose up -d localstack
+docker-compose up -d localstack  # Ebook: Sección 1.5, 5.10
 
 # Probar con SAM
 cd lambda-infra
-sam build --template template.yaml
-sam local invoke "ReactiveFunction" --event events/hello.json
-sam local start-api
+sam build --template template.yaml  # Ebook: Sección 3.6
+sam local invoke "ReactiveFunction" --event events/hello.json  # Ebook: Sección 3.6
+sam local start-api  # Ebook: Sección 3.6
 ```
 
 ## 🐳 Ejecución con Docker
@@ -122,8 +122,13 @@ docker run --rm -it `
 
 ```bash
 cd lambda-infra
-sam deploy --guided
+sam deploy --guided  # Ebook: Sección 3.7, 3.11.1
 ```
+
+> 📖 **Ver en el ebook:** 
+> - Sección 3.7 (Despliegue en AWS)
+> - Sección 3.11.1 (Despliegue con API Gateway)
+> - Sección 4.8 (Despliegue del binario nativo en AWS Lambda)
 
 ## 🧪 Testing
 
@@ -136,19 +141,26 @@ sam deploy --guided
 ## 🎯 Compilación Nativa
 
 ```bash
-export JAVA_HOME=/path/to/graalvm-jdk-25
-./gradlew :lambda-core:nativeCompile
+export JAVA_HOME=/path/to/graalvm-jdk-25  # Ebook: Sección 4.5.1
+./gradlew :lambda-core:nativeCompile  # Ebook: Sección 4.4, 4.8
 ```
+
+> 📖 **Ver en el ebook:** Sección 4 (Optimización de arranque y performance con GraalVM Native) para detalles completos sobre configuración, optimizaciones y despliegue del binario nativo.
 
 ## 📊 Observabilidad
 
 ```bash
 # Health check
-curl http://localhost:8080/actuator/health
+curl http://localhost:8080/actuator/health  # Ebook: Sección 6.4
 
 # Métricas
-curl http://localhost:8080/actuator/metrics
+curl http://localhost:8080/actuator/metrics  # Ebook: Sección 6.4
 ```
+
+> 📖 **Ver en el ebook:** 
+> - Sección 6.3 (Logging estructurado)
+> - Sección 6.4 (Métricas personalizadas con Micrometer)
+> - Sección 6.5 (Trazas distribuidas con AWS X-Ray)
 
 ## 🐛 Troubleshooting
 
@@ -172,11 +184,26 @@ export GRADLE_OPTS="-Xmx4g"
 ## 📁 Estructura del Proyecto
 
 ```
-├── lambda-core/          # Código principal Lambda
-├── lambda-infra/         # Template SAM
-├── lambda-tests/         # Tests de integración
-└── buildSrc/             # Convenciones Gradle
+├── lambda-core/          # Código principal Lambda (Ebook: Sección 1.7, 3.9)
+│   ├── src/main/java/com/example/lambda/
+│   │   ├── FunctionConfig.java      # Ebook: Sección 3.9.1
+│   │   ├── HelloHandler.java        # Ebook: Sección 3.9.2
+│   │   ├── HelloController.java     # Ebook: Sección 2.4, 2.5
+│   │   ├── GlobalExceptionHandler.java  # Ebook: Sección 3.10, 2.7
+│   │   └── RequestValidator.java   # Ebook: Sección 3.10.1
+│   └── src/main/resources/
+│       ├── application.yml          # Ebook: Sección 1.9.1
+│       ├── application-dev.yml       # Ebook: Sección 1.9.2
+│       └── application-prod.yml     # Ebook: Sección 1.9.3
+├── lambda-infra/         # Template SAM (Ebook: Sección 3.11)
+│   ├── template.yaml     # Ebook: Sección 3.11
+│   └── events/           # Ebook: Sección 3.6
+├── lambda-tests/         # Tests de integración (Ebook: Sección 2.8)
+└── buildSrc/             # Convenciones Gradle (Ebook: Sección 1.4)
+    └── src/main/kotlin/conventions.gradle.kts  # Ebook: Sección 0.14, 1.4
 ```
+
+> 📖 **Documento de Referencias Cruzadas:** Ver [`REFERENCIAS_CRUZADAS_EBOOK_PROYECTO.md`](REFERENCIAS_CRUZADAS_EBOOK_PROYECTO.md) para mapeo completo entre el ebook y los archivos del proyecto.
 
 ## 📚 Recursos
 
@@ -185,11 +212,13 @@ export GRADLE_OPTS="-Xmx4g"
 - 🛒 [Hotmart](https://go.hotmart.com/O102857613J?dp=1)
 - 💳 [Gumroad](https://marcoslozina.gumroad.com/l/tporu)
 
+> 🔗 **Referencias Cruzadas:** Este proyecto está 100% alineado con el ebook. Consulta [`REFERENCIAS_CRUZADAS_EBOOK_PROYECTO.md`](REFERENCIAS_CRUZADAS_EBOOK_PROYECTO.md) para navegar entre el ebook y el código fuente.
+
 ### Documentación
-- [Spring Boot](https://spring.io/projects/spring-boot)
-- [Spring Cloud Function](https://spring.io/projects/spring-cloud-function)
-- [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/)
-- [Project Reactor](https://projectreactor.io/docs/core/release/reference/)
+- [Spring Boot](https://spring.io/projects/spring-boot) *(Ebook: Sección 0.13, 1.4)*
+- [Spring Cloud Function](https://spring.io/projects/spring-cloud-function) *(Ebook: Sección 3.2)*
+- [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/) *(Ebook: Sección 3.6, 3.11)*
+- [Project Reactor](https://projectreactor.io/docs/core/release/reference/) *(Ebook: Sección 2.3)*
 
 ## 💝 Apoyo al Proyecto
 

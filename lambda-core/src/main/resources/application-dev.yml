@@ -1,0 +1,9 @@
+# Configuración para desarrollo local con LocalStack
+aws:
+  dynamodb:
+    endpoint: http://localhost:4566
+  sqs:
+    endpoint: http://localhost:4566
+  sns:
+    endpoint: http://localhost:4566
+
