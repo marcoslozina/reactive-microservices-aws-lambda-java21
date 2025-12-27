@@ -40,6 +40,13 @@ API Gateway HTTP API → AWS Lambda → Spring Cloud Function → Project Reacto
 # Clonar y compilar
 git clone <repository-url>
 cd reactive-microservices-aws-lambda-java25
+
+# Usar la versión con Java 25 (recomendado)
+git checkout v1.0.0-java25
+
+# O usar la versión anterior con Java 21 (solo para referencia)
+# git checkout v1.0.0-java21
+
 ./gradlew clean build  # Ebook: Sección 1.4, 1.8
 
 # Ejecutar tests
@@ -204,6 +211,38 @@ export GRADLE_OPTS="-Xmx4g"
 ```
 
 > 📖 **Documento de Referencias Cruzadas:** Ver [`REFERENCIAS_CRUZADAS_EBOOK_PROYECTO.md`](REFERENCIAS_CRUZADAS_EBOOK_PROYECTO.md) para mapeo completo entre el ebook y los archivos del proyecto.
+
+## 🏷️ Versiones y Tags
+
+El proyecto incluye tags de Git para facilitar el acceso a diferentes versiones:
+
+- **`v1.0.0-java25`** (actual): Versión completa migrada a Java 25
+  - Java 25 LTS, Spring Boot 3.4.13, Gradle 9.2.1
+  - Runtime AWS Lambda: `java25`
+  - Recomendado para seguir el ebook actualizado
+
+- **`v1.0.0-java21`**: Última versión antes de la migración a Java 25
+  - Java 21, Spring Boot 3.3.1
+  - Útil para comparar cambios o ver el estado anterior
+
+### Usar una versión específica
+
+```bash
+# Ver todas las versiones disponibles
+git tag -l
+
+# Cambiar a la versión con Java 25 (recomendado)
+git checkout v1.0.0-java25
+
+# Cambiar a la versión con Java 21 (solo referencia)
+git checkout v1.0.0-java21
+
+# Ver diferencias entre versiones
+git diff v1.0.0-java21 v1.0.0-java25
+
+# Volver a la última versión
+git checkout main
+```
 
 ## 📚 Recursos
 
